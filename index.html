@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" ng-app="Mezclas">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!--<link rel="stylesheet" href="uikit-3.7.2/css/uikit.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Calcule Mezclas</title>
+  </head>
+  <body background="fondo.jpg">
+
+    <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><hi>Calcule mezclas</hi></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">    home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1"         aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+      </div>
+    </nav><!-- fin del navabar/////////////////////-->
+
+    <div>
+      Contenido inicial
+    </div>
+
+    <div class="container" ng-controller="Controlador1">
+      {{color}}
+      <div>
+        <button type="button" class="btn btn-primary" ng-click="setVisible(1);"> seccion 1</button>
+        <button type="button" class="btn btn-primary" ng-click="setVisible(2);"> seccion 2</button>
+        <button type="button" class="btn btn-primary" ng-click="setVisible(3);"> seccion 3</button>
+      </div>
+      <div class="panel" id ="panel1" style="display:{{visivilityP1}};">Contenido panel 1 </div>
+      <div class="panel" id ="panel2" style="display:{{visivilityP2}};">Contenido panel 2 </div>
+      <div class="panel" id ="panel3" style="display:{{visivilityP3}};">Contenido panel 3 </div>
+      <br><br><br><br>
+    </div>
+
+
+   
+
+
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    
+    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+
+1914 translation by H. Rackham
+
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
+    <div>
+      afchah
+    </div>
+  </footer>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <script src="app.js"></script>
+    
+  </body>
+</html>
