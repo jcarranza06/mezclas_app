@@ -18,9 +18,13 @@ function Controlador1($scope) {
 
 
 	$scope.resistenciaPromedio=0;
+	$scope.tamanoMaxGranulometria=$scope.tamanoMAxAgregadoGrueso;
+	$scope.slump=0;
+	$scope.slumpStringMax="";
+	$scope.slumpStringMin="";
 	$scope.asentamientoMax=0;
-	$scope.asentamientoMaxString="";
 	$scope.volumenUnitarioDeAgua=0;
+	$scope.conOSinAire="";
 	$scope.aireAtrapado_Incorporado=0;
 	$scope.relacionAguaCemento=0;
 	$scope.factorCemento=0;
@@ -29,6 +33,11 @@ function Controlador1($scope) {
 	$scope.sumaVolumenesConocidosKg=0;
 	$scope.volumenAbsolutoAgregadoFino=0;
 	$scope.pesoAgregadoFinoSeco=0;
+	$scope.aguaEfectiva=0;
+	$scope.agregadoFinoHumedo=0;
+	$scope.agregadoGruesoHumedo=0;
+	$scope.relacionAguaCementoDeDiseno=0;
+	$scope.relacionAguaCementoEfectiva=0;
        
 
 	$scope.setVisiblePanel = function(i){
@@ -64,6 +73,7 @@ function Controlador1($scope) {
 			console.log("3");
 		}else if(i==4){
 			document.getElementById('moduloFineza').style.display = 'inline-block';
+			
 			console.log("4");
 		}else if(i==5){
 			document.getElementById('tamanoPesoSeco').style.display = 'inline-block';
@@ -124,7 +134,207 @@ function Controlador1($scope) {
 			console.log("11");
 		}
 	}
-	
+
+	$scope.calcular = function(i){
+		determinarResistenciaPromedio();
+		$scope.tamanoMaxGranulometria=$scope.tamanoMAxAgregadoGrueso;
+		setAsentamiento();
+		setVolumenAgua();
+		setContenidoAire();
+		setRelacion();
+		setFactorCemento();
+	}
+
+	function determinarResistenciaPromedio(){
+		let a1=$scope.resistenciaEnCompresion + ($scope.desviacionEstandar*1.34);
+		let a2=$scope.resistenciaEnCompresion + ($scope.desviacionEstandar*2.33) -35;
+		if (a1>=a2){
+			$scope.resistenciaPromedio=a1;
+		}else if(a1<a2){
+			$scope.resistenciaPromedio=a2;
+		}
+		console.log("a1: "+a1 +" a2: "+a2 + " resistenciaPromedio: " + $scope.resistenciaPromedio);
+	}
+	function setAsentamiento(){
+		if($scope.tipoEstructura==="Concreto Ciclopeo"){
+			$scope.slump = 2;
+		}else{
+			$scope.slump =4;
+		}
+
+		if ($scope.tipoEstructura==="Zapatas y muros de cimentacion reforzada"){
+			$scope.slumpStringMax='3"';
+			$scope.slumpStringMin='1"';
+		}else if($scope.tipoEstructura==="Cimentacion simple y calzaduras"){
+			$scope.slumpStringMax='3"';
+			$scope.slumpStringMin='1"';
+		}
+		else if($scope.tipoEstructura==="Vigas y muros armados"){
+			$scope.slumpStringMax='4"';
+			$scope.slumpStringMin='1"';
+		}
+		else if($scope.tipoEstructura==="Columnas"){
+			$scope.slumpStringMax='4"';
+			$scope.slumpStringMin='2"';
+		}
+		else if($scope.tipoEstructura==="Losas y pavimentos"){
+			$scope.slumpStringMax='3"';
+			$scope.slumpStringMin='1"';
+		}
+		else if($scope.tipoEstructura==="Concreto Ciclopeo"){
+			$scope.slumpStringMax='2"';
+			$scope.slumpStringMin='1"';
+		}
+	}
+
+	function setVolumenAgua(){
+		$scope.conOSinAire =$scope.conOSinAireIncorporado;
+		console.log($scope.conOSinAire+" "+ $scope.tamanoMAxAgregadoGrueso+" "+$scope.slump)
+		const tablaVolumenAgua ={
+			"Con aire incorporado":{
+				2:{//Slump 2
+					"3/8": 181,
+					"1/2": 175,
+					"3/4": 168,
+					"1": 160,
+					"1.5": 150,
+					"2": 142,
+					"3": 122,
+					"4": 107
+				},
+				4:{//Slump 4
+					"3/8": 202,
+					"1/2": 193,
+					"3/4": 184,
+					"1": 175,
+					"1.5": 165,
+					"2": 157,
+					"3": 133,
+					"4": 119
+				}
+			},
+			"Sin aire incorporado":{
+				2:{//Slump 2
+					"3/8": 207,
+					"1/2": 199,
+					"3/4": 190,
+					"1": 179,
+					"1.5": 166,
+					"2": 154,
+					"3": 130,
+					"4": 113
+				},
+				4:{//Slump 4
+					"3/8": 228,
+					"1/2": 216,
+					"3/4": 205,
+					"1": 193,
+					"1.5": 181,
+					"2": 169,
+					"3": 145,
+					"4": 124
+				}
+			}
+		}
+		$scope.volumenUnitarioDeAgua=tablaVolumenAgua[$scope.conOSinAire][$scope.slump][$scope.tamanoMAxAgregadoGrueso];
+		console.log($scope.volumenUnitarioDeAgua);
+	}
+
+	function setContenidoAire(){
+		console.log("cont aire " +$scope.gradoDeExposicion+" "+ $scope.tamanoMAxAgregadoGrueso);
+		const tablaContenidoAire={
+			"Sin grado de exposicion":{
+				"3/8": 3,
+				"1/2": 2.5,
+				"3/4": 2,
+				"1": 1.5,
+				"1.5": 1,
+				"2": 0.5,
+				"3": 0.3,
+				"4": 0.2
+			},
+			"normal":{
+				"3/8": 4.5,
+				"1/2": 4,
+				"3/4": 3.5,
+				"1": 3,
+				"1.5": 2.5,
+				"2": 2,
+				"3": 1.5,
+				"4": 1
+			},
+			"moderado":{
+				"3/8": 8,
+				"1/2": 5.5,
+				"3/4": 5,
+				"1": 4.5,
+				"1.5": 4.5,
+				"2": 4,
+				"3": 3.5,
+				"4": 3
+			},
+			"extremo":{
+				"3/8": 7.5,
+				"1/2": 7,
+				"3/4": 6,
+				"1": 6,
+				"1.5": 5.5,
+				"2": 5,
+				"3": 4.5,
+				"4": 4
+			}
+		}
+		$scope.aireAtrapado_Incorporado=tablaContenidoAire[$scope.gradoDeExposicion][$scope.tamanoMAxAgregadoGrueso];
+
+	}
+
+	function setRelacion(){
+		let limSupResistenciaP=sacarLimSup($scope.resistenciaPromedio);
+		let limInfResistenciaP=sacarLimInf($scope.resistenciaPromedio);
+		console.log("set rela "+$scope.resistenciaPromedio+" "+ limSupResistenciaP+" "+limInfResistenciaP);
+
+		const tablaRelacion = {
+			"Con aire incorporado":{
+				350:0.39,
+				300:0.45,
+				250:0.53,
+				200:0.61,
+				150:0.71
+
+			},
+			"Sin aire incorporado":{
+				450:0.38,
+				400:0.42,
+				350:0.47,
+				300:0.54,
+				250:0.62,
+				200:0.7,
+				150:0.8
+			}
+		}
+
+		if ($scope.resistenciaPromedio==150 || $scope.resistenciaPromedio==200 ||$scope.resistenciaPromedio==250 ||$scope.resistenciaPromedio==300 ||$scope.resistenciaPromedio==350 ||$scope.resistenciaPromedio==400 ||$scope.resistenciaPromedio==450  ){
+			$scope.relacionAguaCemento=tablaRelacion[$scope.conOSinAire][$scope.resistenciaPromedio]
+		}else{
+			$scope.relacionAguaCemento=tablaRelacion[$scope.conOSinAire][limInfResistenciaP]+((($scope.resistenciaPromedio-limInfResistenciaP)/(limSupResistenciaP-limInfResistenciaP))*(tablaRelacion[$scope.conOSinAire][limSupResistenciaP] -tablaRelacion[$scope.conOSinAire][limInfResistenciaP]));
+		}
+		console.log($scope.relacionAguaCemento);
+	}
+
+	function sacarLimSup(i){
+		let a=(Math.floor(i/50)+1)*50;
+		return a;
+	}
+	function sacarLimInf(i){
+		let a=(Math.floor(i/50))*50;
+		return a;
+	}
+
+	function setFactorCemento(){
+		$scope.factorCemento=$scope.volumenUnitarioDeAgua/$scope.relacionAguaCemento;
+		
+	}
+
 }
 
 

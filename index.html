@@ -60,6 +60,7 @@
             <button class="botonIzq" id="botonContainerResultado" ng-click="setVisiblePanel(2)">Resultados</button>
           </li>
         </ul>
+        <button class="botonCalcular" id="botonCalcular" ng-click="calcular()">Calcular</button>
       </div>
 
       <div>
@@ -79,36 +80,36 @@
         <div class="panelIngreso" id="pesoEspecifico">
           <div id="pesoSecoCemento">
             <div class="uk-margin">
-             Peso especifico del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoEspecificoCemento"> gr/cm3
+             Peso especifico del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoEspecificoCemento"  ng-model="pesoEspecificoCemento"> gr/cm3
             </div>
             <div class="uk-margin">
-              Peso especifico del Agregado Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoEspecificoAgregadoFino"> gr/cm3
+              Peso especifico del Agregado Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoEspecificoAgregadoFino" ng-model="pesoEspecificoAgregadoFino"> gr/cm3
              </div>
              <div class="uk-margin">
-              Peso especifico del Agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoEspecificoAgregadoGrueso"> gr/cm3
+              Peso especifico del Agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoEspecificoAgregadoGrueso" ng-model="pesoEspecificoAgregadoGrueso"> gr/cm3
              </div>
           </div>
         </div>
         <div class="panelIngreso" id="absorcion" style="display: none;">
           <div class="uk-margin">
-            Absorcion del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="absorcionCemento"> gr/cm3
+            Absorcion del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="absorcionCemento" ng-model="absorcionCemento"> gr/cm3
            </div>
            <div class="uk-margin">
-            Absorcion del Agregado Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="absorcionAgregadoFino"> gr/cm3
+            Absorcion del Agregado Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="absorcionAgregadoFino" ng-model="absorcionAgregadoFino"> gr/cm3
             </div>
             <div class="uk-margin">
-            Absorcion del Agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="absorcionAgregadoGrueso"> gr/cm3
+            Absorcion del Agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="absorcionAgregadoGrueso" ng-model="absorcionAgregadoGrueso"> gr/cm3
             </div>
         </div>
         <div class="panelIngreso" id="ContenidoHumedad" style="display: none;">
           <div class="uk-margin">
-            Contenido de Humedad del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="contenidoHumedadCemento"> gr/cm3
+            Contenido de Humedad del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="contenidoHumedadCemento" ng-model="contenidoHumedadCemento"> gr/cm3
            </div>
            <div class="uk-margin">
-            Contenido de Humedad Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="contenidoHumedadAgregadoFino"> gr/cm3
+            Contenido de Humedad Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="contenidoHumedadAgregadoFino" ng-model="contenidoHumedadAgregadoFino"> gr/cm3
             </div>
             <div class="uk-margin">
-              Contenido de Humedad Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="contenidoHumedadAgregadoGrueso"> gr/cm3
+              Contenido de Humedad Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="contenidoHumedadAgregadoGrueso" ng-model="contenidoHumedadAgregadoGrueso"> gr/cm3
             </div>
         </div>
 
@@ -116,7 +117,7 @@
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Modulo Fineza agregado fino</label>
             <div class="uk-form-controls">
-                <select class="uk-select" id="moduloFinezaAgregadoFino">
+                <select class="uk-select" id="moduloFinezaAgregadoFino" ng-model="moduloFinezaAgregadoFino">
                     <option>2.4</option>
                     <option>2.6</option>
                     <option>2.8</option>
@@ -125,7 +126,7 @@
             </div>
         </div>
             <div class="uk-margin">
-              modulo fineza agregado grueso<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="moduloFinezaAgregadoGrueso"> gr/cm3
+              modulo fineza agregado grueso<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="moduloFinezaAgregadoGrueso" ng-model="moduloFinezaAgregadoGrueso"> gr/cm3
             </div>
         </div>
 
@@ -133,7 +134,7 @@
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Tamaño maximo Agregado grueso</label>
             <div class="uk-form-controls">
-                <select class="uk-select" id="tamanoMAxAgregadoGrueso">
+                <select class="uk-select" id="tamanoMAxAgregadoGrueso" ng-model="tamanoMAxAgregadoGrueso">
                     <option>3/8</option>
                     <option>1/2</option>
                     <option>3/4</option>
@@ -146,13 +147,13 @@
             </div>
         </div>
         <div class="uk-margin">
-          Peso seco compactado agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoSecoAgregadoGrueso"> gr/cm3
+          Peso seco compactado agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoSecoAgregadoGrueso" ng-model="pesoSecoAgregadoGrueso"> gr/cm3
         </div>
         <div class="uk-margin">
-          Resistencia en compresion <input ng-model="resistencieEnCompresion" class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="resistenciaEnCompresion"> gr/cm3
+          Resistencia en compresion <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="resistenciaEnCompresion" ng-model="resistenciaEnCompresion"> gr/cm3
          </div>
          <div class="uk-margin">
-          Desviacion estandar <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="desviacionEstandar"> gr/cm3
+          Desviacion estandar <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="desviacionEstandar" ng-model="desviacionEstandar"> gr/cm3
          </div>
         </div>
         </div>
@@ -177,7 +178,7 @@
         </div>
         <div class="contenido">
         <div class="panelIngreso" id="resistenciaTamMax">
-          cont p r 1
+          
           <div>
             resistencia promedio <span id=resistenciaPromedio>{{resistenciaPromedio}}</span>
           </div>
@@ -188,30 +189,31 @@
           </div>
         </div>
         <div class="panelIngreso" id="asentamiento" style="display: none;">
-          cont p r 2
+          
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Tipo de estructura</label>
             <div class="uk-form-controls">
-                <select class="uk-select" id="tamanoMAxAgregadoGrueso">
+                <select class="uk-select" id="tipoEstructura" ng-model="tipoEstructura">
                     <option>Zapatas y muros de cimentacion reforzada</option>
                     <option>Cimentacion simple y calzaduras</option>
-                    <option>3/4</option>
                     <option>Vigas y muros armados</option>
                     <option>Columnas</option>
                     <option>Losas y pavimentos</option>
                     <option>Concreto Ciclopeo</option>
                 </select>
             </div>
+            <br>
             <div>
-              DEACUERDO A LAS ESPECIFICACIONES, LAS CONDICIONES DE COLOCACION REQUIEREN QUE LA 
-              MEZCLA TENGA <br> CONSISTENCIA PLASTICA, CORRESPONDIENTE A UN ASENTAMIENTO DE 
-              <span>{{asentamientoMaxString}}</span>
+              DEACUERDO A LAS ESPECIFICACIONES, LAS CONDICIONES DE COLOCACION <br>REQUIEREN QUE LA 
+              MEZCLA TENGA CONSISTENCIA PLASTICA, <br> CORRESPONDIENTE A UN ASENTAMIENTO DE ENTRE {{slumpStringMax}} y 
+              {{slumpStringMin}}
+      
             </div>
             <br><br><br>
             <div class="nota">
               Nota: 
               <p>1) EL SLUMP PUEDE INCREMENTARSE CUANDO SE USAN ADITIVOS, 
-                SIEMPRE QUE NO SE MODIFIQUE LA RELACION<br> AGUA/CEMENTO NI EXISTA SEGREGACION NI EXUDACION </p>
+                SIEMPRE QUE <br>NO SE MODIFIQUE LA RELACION AGUA/CEMENTO NI EXISTA SEGREGACION NI EXUDACION </p>
               <p>
                 2) EL SLUMP PUEDE INCREMENTARSE EN "1" SI NO SE USA VIBRADOR EN LA COMPACTACION
               </p>
@@ -219,11 +221,11 @@
         </div>
         </div>
         <div class="panelIngreso" id="volumenAgua" style="display: none;">
-          cont p r 3
+          
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Incorporacion de aire</label>
             <div class="uk-form-controls">
-                <select class="uk-select" id="tamanoMAxAgregadoGrueso">
+                <select class="uk-select" id="conOSinAireIncorporado" ng-model="conOSinAireIncorporado">
                     <option>Con aire incorporado</option>
                     <option>Sin aire incorporado</option>
                 </select>
@@ -235,11 +237,11 @@
 
         </div>
         <div class="panelIngreso" id="contAire" style="display: none;">
-          cont p r 4
+         
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Grado de exposicion</label>
             <div class="uk-form-controls">
-                <select class="uk-select" id="tamanoMAxAgregadoGrueso">
+                <select class="uk-select" id="gradoDeExposicion" ng-model="gradoDeExposicion">
                     <option>Sin grado de exposicion</option>
                     <option>normal</option>
                     <option>moderado</option>
@@ -252,25 +254,25 @@
         </div>
         </div>
         <div class="panelIngreso" id="relacion" style="display: none;">
-          cont p r 5
+          
         <div>
           {{relacionAguaCemento}}
         </div>
         </div>
         <div class="panelIngreso" id="factCemento" style="display: none;">
-          cont p r 6
+          
           <div>
             {{factorCemento}}
           </div>
         </div>
         <div class="panelIngreso" id="contAgreGrueso" style="display: none;">
-          cont p r 7
+          
           <div>
             {{ContenidoAgregadoGrueso}}
           </div>
         </div>
         <div class="panelIngreso" id="volumenesAbsolut" style="display: none;">
-          cont p r 8
+          
           <div>
             Suma de volumenes conocidos (m3)<span> {{sumaVolumenesConocidosM}}</span>
           </div>
@@ -279,7 +281,7 @@
           </div>
         </div>
         <div class="panelIngreso" id="agregadoFino" style="display: none;">
-          cont p r 9
+          
           <div>
             Volumen absoluto del agregado fino <span>{{volumenAbsolutoAgregadoFino}}</span>
           </div>
@@ -289,10 +291,28 @@
         </div>
         
         <div class="panelIngreso" id="correccionPoHumedadAgregado" style="display: none;">
-          cont p r 10
+          
+          <div>
+            cemento<span> {{factorCemento}}</span>
+          </div>
+          <div>
+            Agua efectiva<span> {{aguaEfectiva}}</span>
+          </div>
+          <div>
+            Agregado fino humedo<span> {{agregadoFinoHumedo}}</span>
+          </div>
+          <div>
+            Agregado grueso humedo<span> {{agregadoGruesoHumedo}}</span>
+          </div>
         </div>
         <div class="panelIngreso" id="proporcionPeso" style="display: none;">
-          cont p r 11
+          
+          <div>
+            Relacion agua-cemento de diseño <span> {{relacionAguaCementoDeDiseno}}</span>
+          </div>
+          <div>
+            Relacion agua-cemento efectiva<span> {{relacionAguaCementoEfectiva}}</span>
+          </div>
         </div>
       </div>
       </div>
