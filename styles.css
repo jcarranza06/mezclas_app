@@ -8,13 +8,17 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
-  height: 100vh;
+ /*height: 100%;*/
+  overflow: auto;
 }
 .panelIngreso{
 	
 	padding: 40px;
 	background-color: white;
 	width: 100%;
+	min-width: 250px;
+	min-height: 100px;
+	height: 100%;
 }
 .nota{
 	font-size: small;
@@ -26,9 +30,44 @@ body {
 	position: relative;
     float: left;
 }
+#banner{
+	background-color: white;
+	overflow: auto;
+	
+}
+
+#banner1{
+	
+	padding: 35px;
+	background-color: white;
+	position: relative;
+    float: left;
+	width: 50%;
+	
+	
+}
+#banner2{
+	position: relative;
+    float: left;
+	width: 50%;
+}
+.botonIzq{
+	position: relative;
+	float: left;
+	width: 95px;
+	height: 30px;
+}
+#botonCalcular{
+	position: relative;
+	float: right;
+	width: 95px;
+	height: 30px;
+	background-color: #66cc32;
+}
 
 .contenido{
 	position: relative;
+	height: 100%;
     float: left;
 }
 .uk-container{
@@ -42,9 +81,21 @@ body {
 
 }
 .panel {
+	
 	width: 100%;
 	background-color: white;
-	position:absolute; 
+	position:relative; 
+	clear: both;
+}
+#panelGrande{
+	width: 100%;
+	background-color: #1566cf;
+}
+
+#panelIzq{
+	width: 90%;
+	background-color: transparent;
+	
 }
 
 #nav {
@@ -53,10 +104,48 @@ body {
 
 }
 footer {
+	padding: 40px;
 	color: white;
 	background-color: #042828;
 	bottom: 0px;
 }
+#botonAtras{
+	position: relative;
+	float: left;
+	width: 95px;
+	height: 30px;
+}
+#botonSiguiente{
+	position: relative;
+	float: right;
+	width: 95px;
+	height: 30px;
+}
+
+#footer{
+	overflow: auto;
+}
+.footerSub{
+	box-sizing: border-box;
+	margin: 20px;
+}
+#footerSub1{
+	position: relative;
+	float: left;
+	width: 32%;
+}
+#footerSub2{
+	position: relative;
+	float: left;
+	width: 32%;
+}
+
+#footerSub3{
+	position: relative;
+	float: left;
+	width: 32%;
+}
+
 
 @media only screen and (min-width: 600px) { /*disp pequeños*/
 
@@ -71,19 +160,70 @@ footer {
 		
 	}
 
+	#banner1{
+	
+		padding: 35px;
+		background-color: white;
+		position: relative;
+		float: left;
+		width: 100%;
+		
+		
+	}
+
 }
 
+
+@media only screen and (max-width: 767px) {
+	#banner1{
+	
+		padding: 35px;
+		background-color: white;
+		position: relative;
+		float: left;
+		width: 100%;
+		
+		
+	}
+}
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-
+	#banner1{
+	
+		padding: 35px;
+		background-color: white;
+		position: relative;
+		float: left;
+		width: 50%;
+		
+		
+	}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-
+	#banner1{
+	
+		padding: 35px;
+		background-color: white;
+		position: relative;
+		float: left;
+		width: 50%;
+		
+		
+	}
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+	#banner1{
 	
+		padding: 35px;
+		background-color: white;
+		position: relative;
+		float: left;
+		width: 50%;
+		
+		
+	}
 }

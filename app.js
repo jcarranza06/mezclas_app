@@ -15,7 +15,9 @@ function Controlador1($scope) {
 	$scope.visivilityP2 = "none";
 	$scope.visivilityP3 = "none";
 
-
+	$scope.principalActual=1;
+	$scope.ingresoActual=1;
+	$scope.resultadoActual=1;
 
 	$scope.resistenciaPromedio=0;
 	$scope.tamanoMaxGranulometria=$scope.tamanoMAxAgregadoGrueso;
@@ -45,10 +47,12 @@ function Controlador1($scope) {
 		if (i==1){
 			document.getElementById('panelIngreso').style.display = 'inline-block';
 			document.getElementById('panelResultados').style.display = 'none';
+			$scope.principalActual=1;
 			console.log("1");
 		}else if(i==2){
 			document.getElementById('panelIngreso').style.display = 'none';
 			document.getElementById('panelResultados').style.display = 'inline-block';
+			$scope.principalActual=2;
 			console.log("2");
 		}
 	}
@@ -62,6 +66,7 @@ function Controlador1($scope) {
 		document.getElementById('moduloFineza').style.display = 'none';
 		document.getElementById('tamanoPesoSeco').style.display = 'none';
 		
+		$scope.ingresoActual=i;
 		if (i==1){
 			document.getElementById('pesoEspecifico').style.display = 'inline-block';
 			console.log("1");
@@ -98,6 +103,8 @@ function Controlador1($scope) {
 		document.getElementById('correccionPoHumedadAgregado').style.display = 'none';
 		document.getElementById('proporcionPeso').style.display = 'none';
 		
+		$scope.resultadoActual=i;
+
 		if (i==1){
 			document.getElementById('resistenciaTamMax').style.display = 'inline-block';
 
@@ -135,6 +142,36 @@ function Controlador1($scope) {
 		}
 	}
 
+	$scope.siguiente=function(){
+		if ($scope.principalActual==1){
+			if($scope.ingresoActual<5){
+				$scope.setVisibleIngreso($scope.ingresoActual+1);
+			}else{
+				$scope.setVisiblePanel(2);
+			}
+		}else{
+			if($scope.resultadoActual<11){
+				$scope.setVisibleResultado($scope.resultadoActual+1);
+			}
+			
+		}
+	}
+	$scope.atras=function(){
+		if ($scope.principalActual==1){
+			if ($scope.ingresoActual>1){
+				$scope.setVisibleIngreso($scope.ingresoActual-1);
+			}
+			
+		}else{
+			if($scope.resultadoActual>1){
+				$scope.setVisibleResultado($scope.resultadoActual-1);
+			}else{
+				$scope.setVisiblePanel(1);
+			}
+			
+		}
+	}
+
 	$scope.calcular = function(i){
 		determinarResistenciaPromedio();
 		$scope.tamanoMaxGranulometria=$scope.tamanoMAxAgregadoGrueso;
@@ -143,6 +180,11 @@ function Controlador1($scope) {
 		setContenidoAire();
 		setRelacion();
 		setFactorCemento();
+		setContenidoAgregadoGrueso();
+		setVolumenesAbsolutos();
+		setContenidoAgregadoFino();
+		setCorreccionPorHumedad();
+		setProporcionPeso();
 	}
 
 	function determinarResistenciaPromedio(){
@@ -334,6 +376,94 @@ function Controlador1($scope) {
 		$scope.factorCemento=$scope.volumenUnitarioDeAgua/$scope.relacionAguaCemento;
 		
 	}
+
+	function setContenidoAgregadoGrueso(){
+		console.log("contAgregado g")
+		const tablaContenidoAgregadoGrueso={
+			"3/8": {
+				"2.4": 0.5,
+				"2.6":0.48,
+				"2.8":0.46,
+				"3":0.44
+			},
+			"1/2": {
+				"2.4": 0.59,
+				"2.6":0.57,
+				"2.8":0.55,
+				"3":0.53
+			},
+			"3/4": {
+				"2.4": 0.66,
+				"2.6":0.64,
+				"2.8":0.62,
+				"3":0.6
+			},
+			"1": {
+				"2.4": 0.71,
+				"2.6":0.69,
+				"2.8":0.67,
+				"3":0.65
+			},
+			"1.5": {
+				"2.4": 0.76,
+				"2.6":0.74,
+				"2.8":0.72,
+				"3":0.7
+			},
+			"2": {
+				"2.4": 0.78,
+				"2.6":0.76,
+				"2.8":0.74,
+				"3":0.72
+			},
+			"3": {
+				"2.4": 0.81,
+				"2.6":0.79,
+				"2.8":0.77,
+				"3":0.75
+			},
+			"4": {
+				"2.4": 0.87,
+				"2.6":0.85,
+				"2.8":0.83,
+				"3":0.81
+			}
+		}
+
+		$scope.ContenidoAgregadoGrueso= tablaContenidoAgregadoGrueso[$scope.tamanoMAxAgregadoGrueso][$scope.moduloFinezaAgregadoFino]*$scope.pesoSecoAgregadoGrueso;
+		console.log("tam g: "+$scope.tamanoMAxAgregadoGrueso+" mod ff: "+$scope.moduloFinezaAgregadoFino+" tabla: "+tablaContenidoAgregadoGrueso[$scope.tamanoMAxAgregadoGrueso][$scope.moduloFinezaAgregadoFino]+" resul: "+$scope.ContenidoAgregadoGrueso);
+	}
+
+	function setVolumenesAbsolutos(){
+		$scope.sumaVolumenesConocidosM=($scope.factorCemento/($scope.pesoEspecificoCemento*1000))+($scope.volumenUnitarioDeAgua/1000)+($scope.aireAtrapado_Incorporado/100)+($scope.ContenidoAgregadoGrueso/($scope.pesoEspecificoAgregadoGrueso*1000));
+		$scope.sumaVolumenesConocidosKg=$scope.sumaVolumenesConocidosM*1000;
+		console.log("volumenes conoc: m:"+$scope.sumaVolumenesConocidosM+" kg: "+$scope.sumaVolumenesConocidosKg);
+	}
+
+	function setContenidoAgregadoFino(){
+		$scope.volumenAbsolutoAgregadoFino=1-$scope.sumaVolumenesConocidosM;
+		$scope.pesoAgregadoFinoSeco=$scope.volumenAbsolutoAgregadoFino*$scope.pesoEspecificoAgregadoFino*1000;
+		console.log("cont agregado f: "+$scope.volumenAbsolutoAgregadoFino+" "+$scope.pesoAgregadoFinoSeco)
+	}
+
+	function setCorreccionPorHumedad(){
+		$scope.agregadoGruesoHumedo=$scope.ContenidoAgregadoGrueso*1.02;
+		$scope.agregadoFinoHumedo=$scope.pesoAgregadoFinoSeco*1.06;
+
+		let agregadoFinoP=(6-$scope.absorcionAgregadoFino)/100;
+		let agregadoGruesoP=(2-$scope.absorcionAgregadoGrueso)/100;
+
+		let aporteHumedadAgregados =($scope.pesoAgregadoFinoSeco* agregadoFinoP)+($scope.ContenidoAgregadoGrueso*agregadoGruesoP);
+		$scope.aguaEfectiva=$scope.volumenUnitarioDeAgua - aporteHumedadAgregados;
+
+	}
+
+	function setProporcionPeso(){
+		$scope.relacionAguaCementoDeDiseno=$scope.volumenUnitarioDeAgua /$scope.factorCemento;
+		$scope.relacionAguaCementoEfectiva=$scope.aguaEfectiva /$scope.factorCemento;
+	}
+
+
 
 }
 

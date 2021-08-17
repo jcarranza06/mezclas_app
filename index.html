@@ -26,7 +26,7 @@
             <circle cx='40' cy='40' r='37' stroke='white' stroke-width='2' fill-opacity="0" />
             <circle cx='40' cy='40' r='33' stroke='white' stroke-width='3' fill-opacity="0" />
             <circle cx='40' cy='40' r='28' stroke='white' stroke-width='4' fill-opacity="0" />
-            <text x="20" y="51" stroke="white" fill='white' font-size="32">UA</text>
+            <text x="19 n" y="51" stroke="white" fill='white' font-size="32">UA</text>
           </svg>
         </div>
         <div class=" uk-visible@s">
@@ -44,28 +44,46 @@
       </div>
     </nav><!-- fin del navabar/////////////////////-->
 
+    <div id="banner">
+      <div class="" id="banner1">
+        <article class="uk-article">
+
+          <h1 class="uk-article-title"><a class="uk-link-reset" href="">Texto introductivo</a></h1>
+      
+          <!--<p class="uk-text-lead">rud exercitation ullamco laboris nisi ut aliquip.</p>-->
+
+          <p>Lorem ipsum incidiiqua. Ut enim ad minim veniam, quis nostro laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      </article>
+      </div>
+      <div id="banner2" class="uk-visible@m">
+        <img src="fondo.jpg" alt="calculo mexclas ingenieria civil">
+      </div>
+    </div>
+    <br><br>
+    
     <div class="uk-container">
       
     </div>
-    <div class="uk-container" ng-controller="Controlador1">
+    <div class="uk-container" ng-controller="Controlador1" id="panelGrande">
       
       <div class="uk-container"></div>
       
-      <div id="panelIzq">
+      <div class="" id="panelIzq">
         <ul>
           <li>
-            <button class="botonIzq" id="botonContainerIngreso" ng-click="setVisiblePanel(1)">Ingreso</button>
+            <button class="botonIzq uk-button-secondary" id="botonContainerIngreso" ng-click="setVisiblePanel(1)">Ingreso</button>
           </li>
           <li>
-            <button class="botonIzq" id="botonContainerResultado" ng-click="setVisiblePanel(2)">Resultados</button>
+            <button class="botonIzq uk-button-secondary" id="botonContainerResultado" ng-click="setVisiblePanel(2)">Resultados</button>
           </li>
         </ul>
-        <button class="botonCalcular" id="botonCalcular" ng-click="calcular()">Calcular</button>
+        <button class="botonDerecho  uk-button-primary" id="botonCalcular" ng-click="calcular()">Calcular</button>
       </div>
-
+      <br>
       <div>
         <div class="panel uk-container" id ="panelIngreso" style="display:inline-block;">
-
+          <br>
           <div class="panelBotones" >
             <ul>
               <li><button class="selec_Panel uk-button-primary" ng-click="setVisibleIngreso(1);"> PesoEspecifico</button></li>
@@ -91,9 +109,6 @@
           </div>
         </div>
         <div class="panelIngreso" id="absorcion" style="display: none;">
-          <div class="uk-margin">
-            Absorcion del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="absorcionCemento" ng-model="absorcionCemento"> gr/cm3
-           </div>
            <div class="uk-margin">
             Absorcion del Agregado Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="absorcionAgregadoFino" ng-model="absorcionAgregadoFino"> gr/cm3
             </div>
@@ -102,9 +117,6 @@
             </div>
         </div>
         <div class="panelIngreso" id="ContenidoHumedad" style="display: none;">
-          <div class="uk-margin">
-            Contenido de Humedad del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="contenidoHumedadCemento" ng-model="contenidoHumedadCemento"> gr/cm3
-           </div>
            <div class="uk-margin">
             Contenido de Humedad Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="contenidoHumedadAgregadoFino" ng-model="contenidoHumedadAgregadoFino"> gr/cm3
             </div>
@@ -117,7 +129,7 @@
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Modulo Fineza agregado fino</label>
             <div class="uk-form-controls">
-                <select class="uk-select" id="moduloFinezaAgregadoFino" ng-model="moduloFinezaAgregadoFino">
+                <select class="uk-select  uk-form-width-small" id="moduloFinezaAgregadoFino" ng-model="moduloFinezaAgregadoFino">
                     <option>2.4</option>
                     <option>2.6</option>
                     <option>2.8</option>
@@ -134,7 +146,7 @@
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Tamaño maximo Agregado grueso</label>
             <div class="uk-form-controls">
-                <select class="uk-select" id="tamanoMAxAgregadoGrueso" ng-model="tamanoMAxAgregadoGrueso">
+                <select class="uk-select  uk-form-width-small" id="tamanoMAxAgregadoGrueso" ng-model="tamanoMAxAgregadoGrueso">
                     <option>3/8</option>
                     <option>1/2</option>
                     <option>3/4</option>
@@ -156,10 +168,21 @@
           Desviacion estandar <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="desviacionEstandar" ng-model="desviacionEstandar"> gr/cm3
          </div>
         </div>
+
+        <ul>
+          <li>
+            <button class="botonIzq uk-button-primary" id="botonAtras" ng-click="atras()">Atras</button>
+          </li>
+          <li>
+            <button class="botonIzq uk-button-primary" id="botonSiguiente" ng-click="siguiente()">Siguiente</button>
+          </li>
+        </ul>
+        <br><br>
         </div>
       </div>
 
       <div class="panel uk-container" id ="panelResultados" style="display:none;">
+        <br>
         <div class="panelBotones">
           <ul>
             <li><button class="selec_Panel uk-button-primary" ng-click="setVisibleResultado(1);"> Resistencia y tamaño del agregado</button></li>
@@ -183,7 +206,7 @@
             resistencia promedio <span id=resistenciaPromedio>{{resistenciaPromedio}}</span>
           </div>
           <div>
-            DEACUERDO A LAS ESPECIFICACIONES DE OBRA, A LA GRANULOMETRIA DEL AGREGADO <br>
+            DEACUERDO A LAS ESPECIFICACIONES DE OBRA, A LA GRANULOMETRIA DEL <br>AGREGADO 
             LE CORRESPONDE UN TAMAÑO MAXIMO DE 
              <span id=resistenciaPromedio>{{tamanoMaxGranulometria}}</span>
           </div>
@@ -314,21 +337,44 @@
             Relacion agua-cemento efectiva<span> {{relacionAguaCementoEfectiva}}</span>
           </div>
         </div>
+        <ul>
+          <li>
+            <button class="botonIzq uk-button-primary" id="botonAtras" ng-click="atras()">Atras</button>
+          </li>
+          <li>
+            <button class="botonIzq uk-button-primary" id="botonSiguiente" ng-click="siguiente()">Siguiente</button>
+          </li>
+        </ul>
+        <br><br>
+      </div>
+
+
       </div>
       </div>
+      <br>
       </div>
       
-      </div>
-      <div id="resultado"></div>
-      <br><br><br><br>
+      
     </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-   <br><br>
 
+    
   <footer uk-sticky="offset: 100">
-    <div>
-      afchah<br>a
+    <div id="footer">
+      <div class="footerSub" id="footerSub1">
+        Info de contacto 
+        adkjhs
+        sajda
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia deserunt facilis enim blanditiis quae maxime ducimus tenet
+      </div>
+      <div class="footerSub" id="footerSub2">
+        info de la u 
+        saldfjaioshiahiuhaskjdbashajsbckjas
+        asckjasbchbashcscbsd
+      </div>
+      <div class="footerSub" id="footerSub3"> 
+        mas info asndkjabs,maskjbcka askbd,masckjasjchjbsacbjabcjhbdjchbsjhcgsgdhc
+      </div>
     </div>
   </footer>
 
