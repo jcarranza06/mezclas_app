@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">-->
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-
+    <script src="https://kit.fontawesome.com/94fff88fb4.js" crossorigin="anonymous"></script>
     <script src="uikit/dist/js/uikit-icons.min.js"></script>
 
     <link rel="stylesheet" href="uikit-3.7.2/css/uikit.min.css" />
@@ -18,6 +18,7 @@
   </head>
   <!--<body background="fondo.jpg">-->
   <body>
+    
     <nav class="uk-navbar-container uk-margin" id="nav" uk-navbar>
       <div class="uk-navbar-center uk-margin">
         <div class="uk-margin-small-top uk-margin-small-left">
@@ -48,16 +49,18 @@
       <div class="" id="banner1">
         <article class="uk-article">
 
-          <h1 class="uk-article-title"><a class="uk-link-reset" href="">Texto introductivo</a></h1>
+          <h1 class="uk-article-title"><a class="uk-link-reset" href="">Diseño de Mezclas</a></h1>
       
           <!--<p class="uk-text-lead">rud exercitation ullamco laboris nisi ut aliquip.</p>-->
 
-          <p>Lorem ipsum incidiiqua. Ut enim ad minim veniam, quis nostro laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+          <p>Este método de diseño de mezclas permite obtener la cantidad de cada material(cemento, agua y agregados) que compone la unidad cubica de concreto, este método se basa en el procedimiento desarrollado por el comité 211 del ACI</p>
+          <p>Para empezar complete cada recuadro de la siguiente sección, para ver los resultados oprima el boton de resultados y 
+            complete la información restante
+          </p>
       </article>
       </div>
-      <div id="banner2" class="uk-visible@m">
-        <img src="fondo.jpg" alt="calculo mexclas ingenieria civil">
+      <div id="banner2" class="uk-visible@m" style="background-image: url(fondo.jpg);">
+        <img src="img-icon/fondo.jpg" alt="calculo mexclas ingenieria civil">
       </div>
     </div>
     <br><br>
@@ -98,30 +101,30 @@
         <div class="panelIngreso" id="pesoEspecifico">
           <div id="pesoSecoCemento">
             <div class="uk-margin">
-             Peso especifico del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoEspecificoCemento"  ng-model="pesoEspecificoCemento"> gr/cm3
+             Peso especifico del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="3.15" id="pesoEspecificoCemento"  ng-model="pesoEspecificoCemento"> gr/cm&#179
             </div>
             <div class="uk-margin">
-              Peso especifico del Agregado Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoEspecificoAgregadoFino" ng-model="pesoEspecificoAgregadoFino"> gr/cm3
+              Peso especifico del Agregado Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="3.15" id="pesoEspecificoAgregadoFino" ng-model="pesoEspecificoAgregadoFino"> gr/cm&#179
              </div>
              <div class="uk-margin">
-              Peso especifico del Agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoEspecificoAgregadoGrueso" ng-model="pesoEspecificoAgregadoGrueso"> gr/cm3
+              Peso especifico del Agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="3.15" id="pesoEspecificoAgregadoGrueso" ng-model="pesoEspecificoAgregadoGrueso"> gr/cm&#179
              </div>
           </div>
         </div>
         <div class="panelIngreso" id="absorcion" style="display: none;">
            <div class="uk-margin">
-            Absorcion del Agregado Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="absorcionAgregadoFino" ng-model="absorcionAgregadoFino"> gr/cm3
+            Absorcion del Agregado Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="0.7" id="absorcionAgregadoFino" ng-model="absorcionAgregadoFino"> %
             </div>
             <div class="uk-margin">
-            Absorcion del Agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="absorcionAgregadoGrueso" ng-model="absorcionAgregadoGrueso"> gr/cm3
+            Absorcion del Agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="0.5" id="absorcionAgregadoGrueso" ng-model="absorcionAgregadoGrueso"> %
             </div>
         </div>
         <div class="panelIngreso" id="ContenidoHumedad" style="display: none;">
            <div class="uk-margin">
-            Contenido de Humedad Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="contenidoHumedadAgregadoFino" ng-model="contenidoHumedadAgregadoFino"> gr/cm3
+            Contenido de Humedad Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="6" id="contenidoHumedadAgregadoFino" ng-model="contenidoHumedadAgregadoFino"> %
             </div>
             <div class="uk-margin">
-              Contenido de Humedad Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="contenidoHumedadAgregadoGrueso" ng-model="contenidoHumedadAgregadoGrueso"> gr/cm3
+              Contenido de Humedad Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="2" id="contenidoHumedadAgregadoGrueso" ng-model="contenidoHumedadAgregadoGrueso"> %
             </div>
         </div>
 
@@ -138,15 +141,15 @@
             </div>
         </div>
             <div class="uk-margin">
-              modulo fineza agregado grueso<input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="moduloFinezaAgregadoGrueso" ng-model="moduloFinezaAgregadoGrueso"> gr/cm3
+              modulo fineza agregado grueso<input class="uk-input uk-form-width-medium" type="number" placeholder="1" id="moduloFinezaAgregadoGrueso" ng-model="moduloFinezaAgregadoGrueso"> 
             </div>
         </div>
 
         <div class="panelIngreso" id="tamanoPesoSeco" style="display: none;">
           <div class="uk-margin">
-            <label class="uk-form-label" for="form-horizontal-select">Tamaño maximo Agregado grueso</label>
+            <label class="uk-form-label" for="form-horizontal-select">Tamaño maximo Agregado grueso (")</label>
             <div class="uk-form-controls">
-                <select class="uk-select  uk-form-width-small" id="tamanoMAxAgregadoGrueso" ng-model="tamanoMAxAgregadoGrueso">
+                <select class="uk-select  uk-form-width-small" id="tamanoMAxAgregadoGrueso" ng-model="tamanoMAxAgregadoGrueso">  
                     <option>3/8</option>
                     <option>1/2</option>
                     <option>3/4</option>
@@ -159,13 +162,13 @@
             </div>
         </div>
         <div class="uk-margin">
-          Peso seco compactado agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="pesoSecoAgregadoGrueso" ng-model="pesoSecoAgregadoGrueso"> gr/cm3
+          Peso seco compactado agregado Grueso <input class="uk-input uk-form-width-medium" type="number" placeholder="1600" id="pesoSecoAgregadoGrueso" ng-model="pesoSecoAgregadoGrueso"> kg/m&#179
         </div>
         <div class="uk-margin">
-          Resistencia en compresion <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="resistenciaEnCompresion" ng-model="resistenciaEnCompresion"> gr/cm3
+          Resistencia en compresion <input class="uk-input uk-form-width-medium" type="number" placeholder="190" id="resistenciaEnCompresion" ng-model="resistenciaEnCompresion"> kg/cm&#178
          </div>
          <div class="uk-margin">
-          Desviacion estandar <input class="uk-input uk-form-width-medium" type="number" placeholder="Default" id="desviacionEstandar" ng-model="desviacionEstandar"> gr/cm3
+          Desviacion estandar <input class="uk-input uk-form-width-medium" type="number" placeholder="20" id="desviacionEstandar" ng-model="desviacionEstandar"> kg/cm&#178
          </div>
         </div>
 
@@ -203,7 +206,7 @@
         <div class="panelIngreso" id="resistenciaTamMax">
           
           <div>
-            resistencia promedio <span id=resistenciaPromedio>{{resistenciaPromedio}}</span>
+            resistencia promedio <span id=resistenciaPromedio>{{resistenciaPromedio}}</span>kg/cm&#178
           </div>
           <div>
             DEACUERDO A LAS ESPECIFICACIONES DE OBRA, A LA GRANULOMETRIA DEL <br>AGREGADO 
@@ -255,7 +258,7 @@
             </div>
         </div>
         <div>
-          {{volumenUnitarioDeAgua}}
+         El volumen unitario de agua debe ser de {{volumenUnitarioDeAgua}}lt/m&#179
         </div>
 
         </div>
@@ -273,31 +276,31 @@
             </div>
         </div>
         <div>
-          {{aireAtrapado_Incorporado}} %
+          contenido de aire recomendado {{aireAtrapado_Incorporado}} %
         </div>
         </div>
         <div class="panelIngreso" id="relacion" style="display: none;">
           
         <div>
-          {{relacionAguaCemento}}
+          Relacion Agua/Cemento {{relacionAguaCemento}}
         </div>
         </div>
         <div class="panelIngreso" id="factCemento" style="display: none;">
           
           <div>
-            {{factorCemento}}
+           Factor cemento de {{factorCemento}} kg/m&#179
           </div>
         </div>
         <div class="panelIngreso" id="contAgreGrueso" style="display: none;">
           
           <div>
-            {{ContenidoAgregadoGrueso}}
+            Contenido de agregado grueso {{ContenidoAgregadoGrueso}} kg/m&#179
           </div>
         </div>
         <div class="panelIngreso" id="volumenesAbsolut" style="display: none;">
           
           <div>
-            Suma de volumenes conocidos (m3)<span> {{sumaVolumenesConocidosM}}</span>
+            Suma de volumenes conocidos (m&#179)<span> {{sumaVolumenesConocidosM}}</span>
           </div>
           <div>
             Suma de volumenes conocidos (kg)<span> {{sumaVolumenesConocidosKg}}</span>
@@ -306,26 +309,26 @@
         <div class="panelIngreso" id="agregadoFino" style="display: none;">
           
           <div>
-            Volumen absoluto del agregado fino <span>{{volumenAbsolutoAgregadoFino}}</span>
+            Volumen absoluto del agregado fino <span>{{volumenAbsolutoAgregadoFino}}</span>m&#179
           </div>
           <div>
-            Peso del agregado fino seco <span>{{pesoAgregadoFinoSeco}}</span>
+            Peso del agregado fino seco <span>{{pesoAgregadoFinoSeco}}</span>kg/m&#179
           </div>
         </div>
         
         <div class="panelIngreso" id="correccionPoHumedadAgregado" style="display: none;">
           
           <div>
-            cemento<span> {{factorCemento}}</span>
+            cemento<span> {{factorCemento}}</span>kg/m&#179
           </div>
           <div>
-            Agua efectiva<span> {{aguaEfectiva}}</span>
+            Agua efectiva<span> {{aguaEfectiva}}</span>lt/m&#179
           </div>
           <div>
-            Agregado fino humedo<span> {{agregadoFinoHumedo}}</span>
+            Agregado fino humedo<span> {{agregadoFinoHumedo}}</span>kg/m&#179
           </div>
           <div>
-            Agregado grueso humedo<span> {{agregadoGruesoHumedo}}</span>
+            Agregado grueso humedo<span> {{agregadoGruesoHumedo}}</span>kg/m&#179
           </div>
         </div>
         <div class="panelIngreso" id="proporcionPeso" style="display: none;">
@@ -357,25 +360,46 @@
       
     </div>
 
-
-    
+    <div class="uk-container" id="recomendaciones">
+      <h2>Recomendaciones</h2>
+      <ol>
+        <li>1. Escriba los numeros decimales con punto (.), no con coma (,)</li>
+        <li>2. Complete todos los espacios</li>
+        <li>3. Al cambiar algún valor vuelva a oprimir el botón "calcular"</li>
+        <li></li>
+      </ol>
+      <br><br>
+    </div>
+    <br>
   <footer uk-sticky="offset: 100">
     <div id="footer">
       <div class="footerSub" id="footerSub1">
-        Info de contacto 
-        adkjhs
-        sajda
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia deserunt facilis enim blanditiis quae maxime ducimus tenet
+        Contacto: <br>
+        alexdragonian1965@gmail.com <br>
+        chimbi.miler@uniagraria.edu.co
       </div>
       <div class="footerSub" id="footerSub2">
-        info de la u 
-        saldfjaioshiahiuhaskjdbashajsbckjas
-        asckjasbchbashcscbsd
+        Software para diseño de mezclas de concreto simple  según método ACI 211
       </div>
       <div class="footerSub" id="footerSub3"> 
-        mas info asndkjabs,maskjbcka askbd,masckjasjchjbs acbjabcjhbdjchb sjhcgsgdhc
+        <svg height="50" width="180">
+          <text x='15' y='19' stroke="white" stroke-width='1' fill='white' font-size="19">U N I A G R A R I A</text>
+          <line x1="15" x2="172" y1='28' y2="28" stroke="white" stroke-width='0.8'></line>
+          <text x='15' y='46' stroke="white" stroke-width='0.3' fill='white' font-size="12.5">LA</text>
+          <text x='33' y='46' stroke="white" stroke-width='0.8' fill='white' font-size="12.5">U VERDE</text>
+          <text x='88' y='46' stroke="white" stroke-width='0.3' fill='white' font-size="12.5">DE COLOMBIA</text>
+        </svg>
       </div>
     </div>
+    <hr>
+    <div id="linksC">
+
+      <a href="" class="BrandIcon"><img src = "img-icon/facebook-square-brands.svg" alt="facebook" height="35px" width="35px" /></a>
+      <a href="" class="BrandIcon"><img src = "img-icon/instagram-brands.svg" alt="instagram-brands" height="35px" width="35px" /></a>
+      <a href="" class="BrandIcon"><img src = "img-icon/linkedin-in-brands.svg" alt="instagram-brands" height="35px" width="35px" /></a>
+      
+    </div>
+  
   </footer>
 
     <script src="uikit/dist/js/uikit-icons.min.js"></script>

@@ -41,9 +41,10 @@ function Controlador1($scope) {
 	$scope.relacionAguaCementoDeDiseno=0;
 	$scope.relacionAguaCementoEfectiva=0;
        
-
+	
 	$scope.setVisiblePanel = function(i){
 		$scope.color = "red";
+		$scope.calcular();
 		if (i==1){
 			document.getElementById('panelIngreso').style.display = 'inline-block';
 			document.getElementById('panelResultados').style.display = 'none';
@@ -60,6 +61,7 @@ function Controlador1($scope) {
 
 	$scope.setVisibleIngreso = function(i){
 		$scope.color = "red";
+		$scope.calcular();
 		document.getElementById('pesoEspecifico').style.display = 'none';
 		document.getElementById('absorcion').style.display = 'none';
 		document.getElementById('ContenidoHumedad').style.display = 'none';
@@ -89,7 +91,7 @@ function Controlador1($scope) {
 	$scope.setVisibleResultado = function(i){
 		$scope.color = "red";
 
-		
+		$scope.calcular();
 
 		document.getElementById('resistenciaTamMax').style.display = 'none';
 		document.getElementById('asentamiento').style.display = 'none';
@@ -173,18 +175,68 @@ function Controlador1($scope) {
 	}
 
 	$scope.calcular = function(i){
-		determinarResistenciaPromedio();
-		$scope.tamanoMaxGranulometria=$scope.tamanoMAxAgregadoGrueso;
-		setAsentamiento();
-		setVolumenAgua();
-		setContenidoAire();
-		setRelacion();
-		setFactorCemento();
-		setContenidoAgregadoGrueso();
-		setVolumenesAbsolutos();
-		setContenidoAgregadoFino();
-		setCorreccionPorHumedad();
-		setProporcionPeso();
+		try {
+			determinarResistenciaPromedio();
+		} catch (error) {
+			console.error(error);
+		}
+		try {
+			$scope.tamanoMaxGranulometria=$scope.tamanoMAxAgregadoGrueso;
+		} catch (error) {
+			console.error(error);
+		}
+		try {
+			setAsentamiento();
+		} catch (error) {
+			console.error(error);
+		}
+		try {
+			setVolumenAgua();
+		} catch (error) {
+			console.error(error);
+		}
+		try {
+			setContenidoAire();
+		} catch (error) {
+			console.error(error);
+		}
+		try {
+			setRelacion();
+		} catch (error) {
+			console.error(error);
+		}
+		
+		try {
+			setFactorCemento();
+		} catch (error) {
+			console.error(error);
+		}
+		try {
+			setContenidoAgregadoGrueso();
+		} catch (error) {
+			console.error(error);
+		}
+		try {
+			setVolumenesAbsolutos();
+		} catch (error) {
+			console.error(error);
+		}
+		try {
+			setContenidoAgregadoFino();
+		} catch (error) {
+			console.error(error);
+		}
+		try {
+			setCorreccionPorHumedad();
+		} catch (error) {
+			console.error(error);
+		}
+		try {
+			setProporcionPeso();
+		} catch (error) {
+			console.error(error);
+		}
+		
 	}
 
 	function determinarResistenciaPromedio(){
@@ -373,7 +425,7 @@ function Controlador1($scope) {
 	}
 
 	function setFactorCemento(){
-		$scope.factorCemento=$scope.volumenUnitarioDeAgua/$scope.relacionAguaCemento;
+		$scope.factorCemento=($scope.volumenUnitarioDeAgua/$scope.relacionAguaCemento).toFixed(3);
 		
 	}
 
@@ -435,8 +487,8 @@ function Controlador1($scope) {
 	}
 
 	function setVolumenesAbsolutos(){
-		$scope.sumaVolumenesConocidosM=($scope.factorCemento/($scope.pesoEspecificoCemento*1000))+($scope.volumenUnitarioDeAgua/1000)+($scope.aireAtrapado_Incorporado/100)+($scope.ContenidoAgregadoGrueso/($scope.pesoEspecificoAgregadoGrueso*1000));
-		$scope.sumaVolumenesConocidosKg=$scope.sumaVolumenesConocidosM*1000;
+		$scope.sumaVolumenesConocidosM=(($scope.factorCemento/($scope.pesoEspecificoCemento*1000))+($scope.volumenUnitarioDeAgua/1000)+($scope.aireAtrapado_Incorporado/100)+($scope.ContenidoAgregadoGrueso/($scope.pesoEspecificoAgregadoGrueso*1000))).toFixed(6);
+		$scope.sumaVolumenesConocidosKg=(($scope.sumaVolumenesConocidosM*1000)).toFixed(3);
 		console.log("volumenes conoc: m:"+$scope.sumaVolumenesConocidosM+" kg: "+$scope.sumaVolumenesConocidosKg);
 	}
 
@@ -447,14 +499,14 @@ function Controlador1($scope) {
 	}
 
 	function setCorreccionPorHumedad(){
-		$scope.agregadoGruesoHumedo=$scope.ContenidoAgregadoGrueso*1.02;
-		$scope.agregadoFinoHumedo=$scope.pesoAgregadoFinoSeco*1.06;
+		$scope.agregadoGruesoHumedo=($scope.ContenidoAgregadoGrueso*1.02).toFixed(3);
+		$scope.agregadoFinoHumedo=($scope.pesoAgregadoFinoSeco*1.06).toFixed(3);
 
 		let agregadoFinoP=(6-$scope.absorcionAgregadoFino)/100;
 		let agregadoGruesoP=(2-$scope.absorcionAgregadoGrueso)/100;
 
 		let aporteHumedadAgregados =($scope.pesoAgregadoFinoSeco* agregadoFinoP)+($scope.ContenidoAgregadoGrueso*agregadoGruesoP);
-		$scope.aguaEfectiva=$scope.volumenUnitarioDeAgua - aporteHumedadAgregados;
+		$scope.aguaEfectiva=($scope.volumenUnitarioDeAgua - aporteHumedadAgregados).toFixed(3);
 
 	}
 
