@@ -64,6 +64,7 @@ body {
 	float: right;
 	width: 95px;
 	height: 30px;
+	margin-top: 5px;
 	background-color: #66cc32;
 }
 #botonCalcular:hover{

@@ -138,10 +138,11 @@
                     <option>2.8</option>
                     <option>3</option>
                 </select>
+                "
             </div>
         </div>
             <div class="uk-margin">
-              modulo fineza agregado grueso<input class="uk-input uk-form-width-medium" type="number" placeholder="1" id="moduloFinezaAgregadoGrueso" ng-model="moduloFinezaAgregadoGrueso"> 
+              modulo fineza agregado grueso<input class="uk-input uk-form-width-medium" type="number" placeholder="1" id="moduloFinezaAgregadoGrueso" ng-model="moduloFinezaAgregadoGrueso">"
             </div>
         </div>
 
@@ -217,8 +218,8 @@
         <div class="panelIngreso" id="asentamiento" style="display: none;">
           
           <div class="uk-margin">
-            <label class="uk-form-label" for="form-horizontal-select">Tipo de estructura</label>
-            <div class="uk-form-controls">
+            
+            <!--<div class="uk-form-controls">
                 <select class="uk-select" id="tipoEstructura" ng-model="tipoEstructura">
                     <option>Zapatas y muros de cimentacion reforzada</option>
                     <option>Cimentacion simple y calzaduras</option>
@@ -227,6 +228,59 @@
                     <option>Losas y pavimentos</option>
                     <option>Concreto Ciclopeo</option>
                 </select>
+            </div>-->
+            <table class="uk-table uk-table-striped">
+              <thead>
+                  <tr>
+                      <th>Tipo de estructura</th>
+                      <th>Slump Max</th>
+                      <th>Slump min</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Zapatas y muros de cimentacion reforzada</td>
+                      <td>3"</td>
+                      <td>1"</td>
+                  </tr>
+                  <tr>
+                      <td>Cimentacion simple y calzaduras</td>
+                      <td>3"</td>
+                      <td>1"</td>
+                  </tr>
+                  <tr>
+                      <td>Vigas y muros armados</td>
+                      <td>4"</td>
+                      <td>1"</td>
+                  </tr>
+                  <tr>
+                    <td>Columnas </td>
+                    <td>4"</td>
+                    <td>2"</td>
+                  </tr>
+                  <tr>
+                    <td>Losas y pavimentos</td>
+                    <td>3"</td>
+                    <td>1"</td>
+                </tr>
+                <tr>
+                  <td>Concreto ciclopeo</td>
+                  <td>2"</td>
+                  <td>1"</td>
+              </tr>
+              </tbody>
+          </table>
+          <label class="uk-form-label" for="form-horizontal-select">Elija los tipos de estructura</label>
+            <br>
+            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+              <ul>
+                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a1"> Zapatas y muros de cimentacion reforzada</label></li>
+                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a2"> Cimentacion simple y calzaduras</label></li>
+                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a3"> Vigas y muros armados</label></li>
+                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a4"> Columnas</label></li>
+                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a5"> Losas y pavimentos</label></li>
+                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a6"> Concreto Ciclopeo</label></li>
+              </ul>
             </div>
             <br>
             <div>

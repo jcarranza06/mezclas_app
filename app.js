@@ -175,6 +175,7 @@ function Controlador1($scope) {
 	}
 
 	$scope.calcular = function(i){
+		console.log("inicio calculo");
 		try {
 			determinarResistenciaPromedio();
 		} catch (error) {
@@ -250,35 +251,38 @@ function Controlador1($scope) {
 		console.log("a1: "+a1 +" a2: "+a2 + " resistenciaPromedio: " + $scope.resistenciaPromedio);
 	}
 	function setAsentamiento(){
+
+		
+		
+		if($scope.a6===true && ($scope.a1===undefined||$scope.a1===false)&& 
+								($scope.a2===undefined||$scope.a2===false)&& 
+								($scope.a3===undefined||$scope.a3===false)&& 
+								($scope.a4===undefined||$scope.a4===false)&& 
+								($scope.a5===undefined||$scope.a5===false)){
+									$scope.tipoEstructura="Concreto Ciclopeo";
+								};
+		console.log("se asent: "+ $scope.tipoEstructura);
+
 		if($scope.tipoEstructura==="Concreto Ciclopeo"){
 			$scope.slump = 2;
 		}else{
-			$scope.slump =4;
+			$scope.slump = 4;
 		}
 
-		if ($scope.tipoEstructura==="Zapatas y muros de cimentacion reforzada"){
-			$scope.slumpStringMax='3"';
-			$scope.slumpStringMin='1"';
-		}else if($scope.tipoEstructura==="Cimentacion simple y calzaduras"){
-			$scope.slumpStringMax='3"';
-			$scope.slumpStringMin='1"';
-		}
-		else if($scope.tipoEstructura==="Vigas y muros armados"){
-			$scope.slumpStringMax='4"';
-			$scope.slumpStringMin='1"';
-		}
-		else if($scope.tipoEstructura==="Columnas"){
-			$scope.slumpStringMax='4"';
-			$scope.slumpStringMin='2"';
-		}
-		else if($scope.tipoEstructura==="Losas y pavimentos"){
-			$scope.slumpStringMax='3"';
-			$scope.slumpStringMin='1"';
-		}
-		else if($scope.tipoEstructura==="Concreto Ciclopeo"){
-			$scope.slumpStringMax='2"';
-			$scope.slumpStringMin='1"';
-		}
+		let valoresSlump=[];
+
+		if ($scope.a1===true){valoresSlump.push(3);valoresSlump.push(1);}
+		if ($scope.a2===true){valoresSlump.push(3);valoresSlump.push(1);}
+		if ($scope.a3===true){valoresSlump.push(4);valoresSlump.push(1);}
+		if ($scope.a4===true){valoresSlump.push(4);valoresSlump.push(2);}
+		if ($scope.a5===true){valoresSlump.push(3);valoresSlump.push(1);}
+		if ($scope.a6===true){valoresSlump.push(2);valoresSlump.push(1);}
+
+		
+		$scope.slumpStringMax=Math.max.apply(null, valoresSlump);
+		$scope.slumpStringMin=Math.min.apply(null, valoresSlump);
+		
+		console.log("Slump: "+$scope.slump+ " "+$scope.slumpStringMax+" "+$scope.slumpStringMin);
 	}
 
 	function setVolumenAgua(){
@@ -425,7 +429,7 @@ function Controlador1($scope) {
 	}
 
 	function setFactorCemento(){
-		$scope.factorCemento=($scope.volumenUnitarioDeAgua/$scope.relacionAguaCemento).toFixed(3);
+		$scope.factorCemento=redondear($scope.volumenUnitarioDeAgua/$scope.relacionAguaCemento);
 		
 	}
 
@@ -487,32 +491,35 @@ function Controlador1($scope) {
 	}
 
 	function setVolumenesAbsolutos(){
-		$scope.sumaVolumenesConocidosM=(($scope.factorCemento/($scope.pesoEspecificoCemento*1000))+($scope.volumenUnitarioDeAgua/1000)+($scope.aireAtrapado_Incorporado/100)+($scope.ContenidoAgregadoGrueso/($scope.pesoEspecificoAgregadoGrueso*1000))).toFixed(6);
-		$scope.sumaVolumenesConocidosKg=(($scope.sumaVolumenesConocidosM*1000)).toFixed(3);
+		$scope.sumaVolumenesConocidosM=redondear(($scope.factorCemento/($scope.pesoEspecificoCemento*1000))+($scope.volumenUnitarioDeAgua/1000)+($scope.aireAtrapado_Incorporado/100)+($scope.ContenidoAgregadoGrueso/($scope.pesoEspecificoAgregadoGrueso*1000)));
+		$scope.sumaVolumenesConocidosKg=redondear(($scope.sumaVolumenesConocidosM*1000));
 		console.log("volumenes conoc: m:"+$scope.sumaVolumenesConocidosM+" kg: "+$scope.sumaVolumenesConocidosKg);
 	}
 
 	function setContenidoAgregadoFino(){
-		$scope.volumenAbsolutoAgregadoFino=1-$scope.sumaVolumenesConocidosM;
-		$scope.pesoAgregadoFinoSeco=$scope.volumenAbsolutoAgregadoFino*$scope.pesoEspecificoAgregadoFino*1000;
+		$scope.volumenAbsolutoAgregadoFino=redondear(1-$scope.sumaVolumenesConocidosM);
+		$scope.pesoAgregadoFinoSeco=redondear($scope.volumenAbsolutoAgregadoFino*$scope.pesoEspecificoAgregadoFino*1000);
 		console.log("cont agregado f: "+$scope.volumenAbsolutoAgregadoFino+" "+$scope.pesoAgregadoFinoSeco)
 	}
 
 	function setCorreccionPorHumedad(){
-		$scope.agregadoGruesoHumedo=($scope.ContenidoAgregadoGrueso*1.02).toFixed(3);
-		$scope.agregadoFinoHumedo=($scope.pesoAgregadoFinoSeco*1.06).toFixed(3);
+		$scope.agregadoGruesoHumedo=redondear($scope.ContenidoAgregadoGrueso*1.02);
+		$scope.agregadoFinoHumedo=redondear($scope.pesoAgregadoFinoSeco*1.06);
 
 		let agregadoFinoP=(6-$scope.absorcionAgregadoFino)/100;
 		let agregadoGruesoP=(2-$scope.absorcionAgregadoGrueso)/100;
 
 		let aporteHumedadAgregados =($scope.pesoAgregadoFinoSeco* agregadoFinoP)+($scope.ContenidoAgregadoGrueso*agregadoGruesoP);
-		$scope.aguaEfectiva=($scope.volumenUnitarioDeAgua - aporteHumedadAgregados).toFixed(3);
+		$scope.aguaEfectiva=redondear($scope.volumenUnitarioDeAgua - aporteHumedadAgregados);
 
 	}
 
 	function setProporcionPeso(){
-		$scope.relacionAguaCementoDeDiseno=$scope.volumenUnitarioDeAgua /$scope.factorCemento;
-		$scope.relacionAguaCementoEfectiva=$scope.aguaEfectiva /$scope.factorCemento;
+		$scope.relacionAguaCementoDeDiseno=redondear($scope.volumenUnitarioDeAgua /$scope.factorCemento);
+		$scope.relacionAguaCementoEfectiva=redondear($scope.aguaEfectiva /$scope.factorCemento);
+	}
+	function redondear(i){
+		return ((Math.round(i*100))/100);
 	}
 
 
