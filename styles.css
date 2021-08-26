@@ -29,6 +29,7 @@ body {
 .panelBotones{
 	position: relative;
     float: left;
+	
 }
 #banner{
 	background-color: white;
@@ -54,16 +55,18 @@ body {
 	width: 50%;
 }
 .botonIzq{
+	font-size: 17px;
 	position: relative;
 	float: left;
-	width: 95px;
-	height: 30px;
+	width: 100px;
+	height: 32px;
 }
 #botonCalcular{
+	font-size: 18px;
 	position: relative;
 	float: right;
-	width: 95px;
-	height: 30px;
+	width: 100px;
+	height: 32px;
 	margin-top: 5px;
 	background-color: #66cc32;
 }
@@ -82,7 +85,7 @@ body {
 .selec_Panel{
 	padding: 10px;
 	width: 100%;
-	
+	font-size: 15px;
 
 }
 .panel {
@@ -169,10 +172,6 @@ footer {
 }
 
 @media only screen and (min-width: 600px) { /*disp pequeños*/
-
-	#panelIzq{
-		
-	}
 	.selec_Panel{
 		width: 100%;
 		padding: 10px;
@@ -180,7 +179,6 @@ footer {
 		
 		
 	}
-
 	#banner1{
 	
 		padding: 35px;

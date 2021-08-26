@@ -57,7 +57,6 @@ function Controlador1($scope) {
 			console.log("2");
 		}
 	}
-	
 
 	$scope.setVisibleIngreso = function(i){
 		$scope.color = "red";
@@ -414,7 +413,7 @@ function Controlador1($scope) {
 		if ($scope.resistenciaPromedio==150 || $scope.resistenciaPromedio==200 ||$scope.resistenciaPromedio==250 ||$scope.resistenciaPromedio==300 ||$scope.resistenciaPromedio==350 ||$scope.resistenciaPromedio==400 ||$scope.resistenciaPromedio==450  ){
 			$scope.relacionAguaCemento=tablaRelacion[$scope.conOSinAire][$scope.resistenciaPromedio]
 		}else{
-			$scope.relacionAguaCemento=tablaRelacion[$scope.conOSinAire][limInfResistenciaP]+((($scope.resistenciaPromedio-limInfResistenciaP)/(limSupResistenciaP-limInfResistenciaP))*(tablaRelacion[$scope.conOSinAire][limSupResistenciaP] -tablaRelacion[$scope.conOSinAire][limInfResistenciaP]));
+			$scope.relacionAguaCemento=redondear(tablaRelacion[$scope.conOSinAire][limInfResistenciaP]+((($scope.resistenciaPromedio-limInfResistenciaP)/(limSupResistenciaP-limInfResistenciaP))*(tablaRelacion[$scope.conOSinAire][limSupResistenciaP] -tablaRelacion[$scope.conOSinAire][limInfResistenciaP])));
 		}
 		console.log($scope.relacionAguaCemento);
 	}

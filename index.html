@@ -23,11 +23,11 @@
       <div class="uk-navbar-center uk-margin">
         <div class="uk-margin-small-top uk-margin-small-left">
           <svg id="logo" height="90" width="90">
-            <circle cx='40' cy='40' r='40' stroke='white' stroke-width='1' fill-opacity="0" />
-            <circle cx='40' cy='40' r='37' stroke='white' stroke-width='2' fill-opacity="0" />
-            <circle cx='40' cy='40' r='33' stroke='white' stroke-width='3' fill-opacity="0" />
-            <circle cx='40' cy='40' r='28' stroke='white' stroke-width='4' fill-opacity="0" />
-            <text x="19 n" y="51" stroke="white" fill='white' font-size="32">UA</text>
+            <circle cx='41' cy='41' r='40' stroke='white' stroke-width='1' fill-opacity="0" />
+            <circle cx='41' cy='41' r='37' stroke='white' stroke-width='2' fill-opacity="0" />
+            <circle cx='41' cy='41' r='33' stroke='white' stroke-width='3' fill-opacity="0" />
+            <circle cx='41' cy='41' r='28' stroke='white' stroke-width='4' fill-opacity="0" />
+            <text x="20 n" y="52" stroke="white" fill='white' font-size="32">UA</text>
           </svg>
         </div>
         <div class=" uk-visible@s">
@@ -99,6 +99,7 @@
           </div>
           <div class="contenido">
         <div class="panelIngreso" id="pesoEspecifico">
+          <h3>Peso Especifico</h3><br>
           <div id="pesoSecoCemento">
             <div class="uk-margin">
              Peso especifico del Cemento<input class="uk-input uk-form-width-medium" type="number" placeholder="3.15" id="pesoEspecificoCemento"  ng-model="pesoEspecificoCemento"> gr/cm&#179
@@ -112,6 +113,7 @@
           </div>
         </div>
         <div class="panelIngreso" id="absorcion" style="display: none;">
+          <h3>Absorcion</h3><br>
            <div class="uk-margin">
             Absorcion del Agregado Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="0.7" id="absorcionAgregadoFino" ng-model="absorcionAgregadoFino"> %
             </div>
@@ -120,6 +122,7 @@
             </div>
         </div>
         <div class="panelIngreso" id="ContenidoHumedad" style="display: none;">
+          <h3>Contenido de Humedad</h3><br>
            <div class="uk-margin">
             Contenido de Humedad Fino <input class="uk-input uk-form-width-medium" type="number" placeholder="6" id="contenidoHumedadAgregadoFino" ng-model="contenidoHumedadAgregadoFino"> %
             </div>
@@ -129,6 +132,7 @@
         </div>
 
         <div class="panelIngreso" id="moduloFineza" style="display: none;">
+          <h3>Modulo de Fineza</h3><br>
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Modulo Fineza agregado fino</label>
             <div class="uk-form-controls">
@@ -147,6 +151,7 @@
         </div>
 
         <div class="panelIngreso" id="tamanoPesoSeco" style="display: none;">
+          <h3>Tamaño y Peso seco</h3><br>
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Tamaño maximo Agregado grueso (")</label>
             <div class="uk-form-controls">
@@ -205,10 +210,10 @@
         </div>
         <div class="contenido">
         <div class="panelIngreso" id="resistenciaTamMax">
-          
+          <h3>Resistencia y Tamaño maximo</h3><br>
           <div>
             resistencia promedio <span id=resistenciaPromedio>{{resistenciaPromedio}}</span>kg/cm&#178
-          </div>
+          </div><br>
           <div>
             DEACUERDO A LAS ESPECIFICACIONES DE OBRA, A LA GRANULOMETRIA DEL <br>AGREGADO 
             LE CORRESPONDE UN TAMAÑO MAXIMO DE 
@@ -218,17 +223,6 @@
         <div class="panelIngreso" id="asentamiento" style="display: none;">
           
           <div class="uk-margin">
-            
-            <!--<div class="uk-form-controls">
-                <select class="uk-select" id="tipoEstructura" ng-model="tipoEstructura">
-                    <option>Zapatas y muros de cimentacion reforzada</option>
-                    <option>Cimentacion simple y calzaduras</option>
-                    <option>Vigas y muros armados</option>
-                    <option>Columnas</option>
-                    <option>Losas y pavimentos</option>
-                    <option>Concreto Ciclopeo</option>
-                </select>
-            </div>-->
             <table class="uk-table uk-table-striped">
               <thead>
                   <tr>
@@ -274,19 +268,19 @@
             <br>
             <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
               <ul>
-                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a1"> Zapatas y muros de cimentacion reforzada</label></li>
-                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a2"> Cimentacion simple y calzaduras</label></li>
-                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a3"> Vigas y muros armados</label></li>
-                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a4"> Columnas</label></li>
-                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a5"> Losas y pavimentos</label></li>
-                <li><label><input class="uk-checkbox" type="checkbox" ng-model="a6"> Concreto Ciclopeo</label></li>
+                <li><label><input id="uk-checkbox1" class="uk-checkbox" type="checkbox" ng-model="a1"> Zapatas y muros de cimentacion reforzada</label></li>
+                <li><label><input id="uk-checkbox2" class="uk-checkbox" type="checkbox" ng-model="a2"> Cimentacion simple y calzaduras</label></li>
+                <li><label><input id="uk-checkbox3" class="uk-checkbox" type="checkbox" ng-model="a3"> Vigas y muros armados</label></li>
+                <li><label><input id="uk-checkbox4" class="uk-checkbox" type="checkbox" ng-model="a4"> Columnas</label></li>
+                <li><label><input id="uk-checkbox5" class="uk-checkbox" type="checkbox" ng-model="a5"> Losas y pavimentos</label></li>
+                <li><label><input id="uk-checkbox6" class="uk-checkbox" type="checkbox" ng-model="a6"> Concreto Ciclopeo</label></li>
               </ul>
             </div>
             <br>
             <div>
               DEACUERDO A LAS ESPECIFICACIONES, LAS CONDICIONES DE COLOCACION <br>REQUIEREN QUE LA 
-              MEZCLA TENGA CONSISTENCIA PLASTICA, <br> CORRESPONDIENTE A UN ASENTAMIENTO DE ENTRE {{slumpStringMax}} y 
-              {{slumpStringMin}}
+              MEZCLA TENGA CONSISTENCIA PLASTICA, <br> CORRESPONDIENTE A UN ASENTAMIENTO DE ENTRE {{slumpStringMax}}" y 
+              {{slumpStringMin}}"
       
             </div>
             <br><br><br>
@@ -301,7 +295,7 @@
         </div>
         </div>
         <div class="panelIngreso" id="volumenAgua" style="display: none;">
-          
+          <h3>Volumen de Agua</h3><br>
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Incorporacion de aire</label>
             <div class="uk-form-controls">
@@ -317,7 +311,7 @@
 
         </div>
         <div class="panelIngreso" id="contAire" style="display: none;">
-         
+          <h3>Contenido de Aire</h3><br>
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-select">Grado de exposicion</label>
             <div class="uk-form-controls">
@@ -334,25 +328,25 @@
         </div>
         </div>
         <div class="panelIngreso" id="relacion" style="display: none;">
-          
+          <h3>Relacion Agua/Cemento</h3><br>
         <div>
           Relacion Agua/Cemento {{relacionAguaCemento}}
         </div>
         </div>
         <div class="panelIngreso" id="factCemento" style="display: none;">
-          
+          <h3>Factor Cemento</h3><br>
           <div>
            Factor cemento de {{factorCemento}} kg/m&#179
           </div>
         </div>
         <div class="panelIngreso" id="contAgreGrueso" style="display: none;">
-          
+          <h3>Contenido de Agregado Grueso</h3><br>
           <div>
             Contenido de agregado grueso {{ContenidoAgregadoGrueso}} kg/m&#179
           </div>
         </div>
         <div class="panelIngreso" id="volumenesAbsolut" style="display: none;">
-          
+          <h3>Volumenes Absolutos</h3><br>
           <div>
             Suma de volumenes conocidos (m&#179)<span> {{sumaVolumenesConocidosM}}</span>
           </div>
@@ -361,7 +355,7 @@
           </div>
         </div>
         <div class="panelIngreso" id="agregadoFino" style="display: none;">
-          
+          <h3>Agregado Fino</h3><br>
           <div>
             Volumen absoluto del agregado fino <span>{{volumenAbsolutoAgregadoFino}}</span>m&#179
           </div>
@@ -371,7 +365,7 @@
         </div>
         
         <div class="panelIngreso" id="correccionPoHumedadAgregado" style="display: none;">
-          
+          <h3>Corrección por Humedad</h3><br>
           <div>
             cemento<span> {{factorCemento}}</span>kg/m&#179
           </div>
@@ -386,7 +380,7 @@
           </div>
         </div>
         <div class="panelIngreso" id="proporcionPeso" style="display: none;">
-          
+          <h3>Proporcion en Peso</h3><br>
           <div>
             Relacion agua-cemento de diseño <span> {{relacionAguaCementoDeDiseno}}</span>
           </div>
@@ -417,7 +411,7 @@
     <div class="uk-container" id="recomendaciones">
       <h2>Recomendaciones</h2>
       <ol>
-        <li>1. Escriba los numeros decimales con punto (.), no con coma (,)</li>
+        <li>1. Escriba los numeros decimales con punto (.)</li>
         <li>2. Complete todos los espacios</li>
         <li>3. Al cambiar algún valor vuelva a oprimir el botón "calcular"</li>
         <li></li>
@@ -429,13 +423,32 @@
     <div id="footer">
       <div class="footerSub" id="footerSub1">
         Contacto: <br>
-        alexdragonian1965@gmail.com <br>
-        chimbi.miler@uniagraria.edu.co
+        chimbi.miler@uniagraria.edu.co <br>
+        piratoba.cristian@uniagraria.edu.co<br>
+        villate.juan@uniagraria.edu.co <br>
+        pinerez.william@uniagraria.edu.co
+        
       </div>
       <div class="footerSub" id="footerSub2">
-        Software para diseño de mezclas de concreto simple  según método ACI 211
+        Software para diseño de mezclas de concreto simple  según método ACI 211. <br><br>
+        Autores: <br> 
+        <ul>
+          <li>- Miler Leandro Chimbi Posso </li>
+          <li>- Cristian Alexander Piratoba Cardenas</li>
+          <li>- Juan Pablo Villate Diaz</li>
+          <li>- William Alfonso Piñerez Bettin</li>
+        </ul>
+
       </div>
       <div class="footerSub" id="footerSub3"> 
+          <br>
+          <svg id="logo" height="90" width="90">
+            <circle cx='41' cy='41' r='40' stroke='white' stroke-width='1' fill-opacity="0" />
+            <circle cx='41' cy='41' r='37' stroke='white' stroke-width='2' fill-opacity="0" />
+            <circle cx='41' cy='41' r='33' stroke='white' stroke-width='3' fill-opacity="0" />
+            <circle cx='41' cy='41' r='28' stroke='white' stroke-width='4' fill-opacity="0" />
+            <text x="20" y="52" stroke="white" fill='white' font-size="32">UA</text>
+          </svg>
         <svg height="50" width="180">
           <text x='15' y='19' stroke="white" stroke-width='1' fill='white' font-size="19">U N I A G R A R I A</text>
           <line x1="15" x2="172" y1='28' y2="28" stroke="white" stroke-width='0.8'></line>
@@ -448,9 +461,9 @@
     <hr>
     <div id="linksC">
 
-      <a href="" class="BrandIcon"><img src = "img-icon/facebook-square-brands.svg" alt="facebook" height="35px" width="35px" /></a>
-      <a href="" class="BrandIcon"><img src = "img-icon/instagram-brands.svg" alt="instagram-brands" height="35px" width="35px" /></a>
-      <a href="" class="BrandIcon"><img src = "img-icon/linkedin-in-brands.svg" alt="instagram-brands" height="35px" width="35px" /></a>
+      <a href="https://es-la.facebook.com/uagraria/" class="BrandIcon"><img src = "img-icon/facebook-square-brands.svg" alt="facebook" height="35px" width="35px" /></a>
+      <a href="https://www.instagram.com/uniagraria/?hl=es" class="BrandIcon"><img src = "img-icon/instagram-brands.svg" alt="instagram-brands" height="35px" width="35px" /></a>
+      <a href="https://co.linkedin.com/school/uniagraria/" class="BrandIcon"><img src = "img-icon/linkedin-in-brands.svg" alt="instagram-brands" height="35px" width="35px" /></a>
       
     </div>
   
